@@ -17,3 +17,16 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/list-cards', '\App\Http\Controllers\Api\CardController@list');
+
+Route::apiResource('/columns', '\App\Http\Controllers\Api\ColumnController')
+    ->only(['store', 'destroy']);
+
+Route::apiResource('/cards', '\App\Http\Controllers\Api\CardController')
+    ->only(['store', 'destroy', 'update']);
+
+Route::patch(
+    '/card/update-column/{card}/{column_id}',
+    '\App\Http\Controllers\Api\CardController@updateColumn'
+);
