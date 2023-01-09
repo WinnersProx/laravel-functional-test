@@ -1,0 +1,134 @@
+@import url(https://fonts.googleapis.com/css?family=Nunito);
+body {
+  background-color: #fff;
+  box-sizing: border-box;
+  margin: 0 !important;
+  padding-top: 40px;
+}
+body .app-heading {
+  margin-bottom: 40px;
+}
+body .app-heading h3 {
+  text-transform: uppercase;
+  color: #000462;
+  font-weight: 700;
+}
+body button {
+  border: 1px solid;
+  padding: 6px;
+  width: 100px;
+  color: white;
+  border-radius: 2px;
+  cursor: pointer;
+}
+body button.btn-primary {
+  background: #000462;
+  border: 1px solid #000462;
+}
+body button.btn-danger {
+  border: 1px solid red;
+  background: red;
+}
+body .board-columns {
+  display: flex;
+  margin: 0 auto;
+  padding: 0 30px;
+  max-width: 1300px;
+  overflow-x: scroll;
+}
+body .board-columns__column {
+  background-color: rgb(242, 242, 242);
+  border: 1px solid #eaeaea;
+  width: 320px;
+  min-width: 320px;
+  border-radius: 8px 8px 0px 0px;
+  margin-right: 30px;
+  margin-bottom: 40px;
+}
+body .board-columns__column-title {
+  font-weight: bold;
+  border-bottom: 2px solid #eaeaea;
+  padding: 8px;
+  color: #000462;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+body .board-columns__column-title .delete-icon {
+  font-size: 15px;
+  cursor: pointer;
+  text-transform: capitalize;
+  font-weight: bold;
+}
+body .board-columns__column-body {
+  padding: 8px;
+  height: 400px;
+  overflow-y: scroll;
+}
+body .board-columns__column-footer {
+  padding: 4px 8px;
+  font-weight: bold;
+  border-top: 2px solid #eaeaea;
+  font-size: 15px;
+}
+body .board-columns__column-footer > div {
+  cursor: pointer;
+}
+body .board-columns__new button {
+  background: #7b3eb8;
+  width: 183px;
+  padding: 8px;
+  border-radius: 4px;
+}
+body .board-cards__card {
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+body .board-cards__card-title {
+  background: #fff;
+  border-radius: 5px;
+  padding: 8px;
+  border: 1px solid #eeeeee;
+  font-weight: 600;
+  font-size: 15px;
+}
+body .board-modal {
+  padding: 0 20px;
+}
+body .board-modal__form .form-group {
+  margin-bottom: 5px;
+}
+body .board-modal__form .form-group label {
+  display: block;
+  font-weight: bold;
+}
+body .board-modal__form .form-group input, body .board-modal__form .form-group textarea {
+  width: 100%;
+  padding: 4px;
+  font-family: "Nunito", sans-serif;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+body .board-modal__actions {
+  margin: 10px 0px 25px 0;
+  text-align: right;
+}
+body .board-export {
+  text-align: right;
+  padding-right: 20px;
+}
+body .board-export button {
+  background: #7b3eb8;
+  height: 40px;
+  width: 110px;
+  padding: 0 15px;
+  border-radius: 20px;
+}
+body .board-export button a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.text-center {
+  text-align: center;
+}

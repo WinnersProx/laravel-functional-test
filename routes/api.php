@@ -30,3 +30,4 @@ Route::patch(
     '/card/update-column/{card}/{column_id}',
     '\App\Http\Controllers\Api\CardController@updateColumn'
 );
+

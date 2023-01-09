@@ -3,34 +3,38 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CardListRequest;
+use App\Http\Requests\StoreCardRequest;
 use App\Models\Card;
 use App\Models\Column;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class CardController extends Controller
 {
 
-    public function list(Request $request)
+    public function list(CardListRequest $request): JsonResponse
     {
-        $data = Column::withFilters($request);
+        $hasValidToken = $request->hasValidAccessToken();
 
-        return response()->json($data);
+        $data = $hasValidToken ? Column::withFilters($request) : [];
+
+        return response()->json($data, $hasValidToken ? 200 : 204);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  StoreCardRequest  $request
+     * @return JsonResponse
      */
-    public function store(Request $request)
+    public function store(StoreCardRequest $request): JsonResponse
     {
         $column = Column::findOrFail($request->column_id);
 
-        $card = $column->cards()->create([
-            'title' => $request->title,
-            'description' => $request->description
-        ]);
+        $card = $column->cards()->create(
+            $request->only(['title', 'description'])
+        );
 
         return response()->json([
             'success' => true,
@@ -42,16 +46,13 @@ class CardController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  StoreCardRequest  $request
+     * @param  Card  $card
+     * @return JsonResponse
      */
-    public function update(Request $request, Card $card)
+    public function update(StoreCardRequest $request, Card $card): JsonResponse
     {
-        $card->update([
-            'title' => $request->title,
-            'description' => $request->description
-        ]);
+        $card->update($request->only(['title', 'description']));
 
         return response()->json([
             'success' => true,
@@ -63,10 +64,10 @@ class CardController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  Card  $card
+     * @return JsonResponse
      */
-    public function destroy(Card $card)
+    public function destroy(Card $card): JsonResponse
     {
         $card->delete();
 
@@ -76,7 +77,7 @@ class CardController extends Controller
         ]);
     }
 
-    public function updateColumn(Request $request, Card $card)
+    public function updateColumn(Request $request, Card $card): JsonResponse
     {
         $oldColumnId = (int) $card->column_id;
 

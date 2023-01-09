@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
 
@@ -14,12 +15,12 @@ class Card extends Model
 
     protected $fillable = ['title', 'description'];
 
-    public function column()
+    public function column(): BelongsTo
     {
         return $this->belongsTo(Column::class);
     }
 
-    public function scopeFilteredCards($query, $creationDate, $status) {
+    public function scopeFilteredCards($query, ?string $creationDate, ?string $status) {
         if($creationDate) {
             $query->whereDate('created_at', $creationDate);
         }

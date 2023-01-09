@@ -4,5 +4,157 @@
 // Variables
 @import 'variables';
 
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
+body {
+    background-color: #fff;
+    box-sizing: border-box;
+    margin: 0 !important;
+    padding-top: 40px;
+
+    .app-heading {
+        margin-bottom: 40px;
+        h3 {
+            text-transform: uppercase;
+            color: $color-branding;
+            font-weight: 700;
+        }
+    }
+
+    button {
+        border: 1px solid;
+        padding: 6px;
+        width: 100px;
+        color: white;
+        border-radius: 2px;
+        cursor: pointer;
+        &.btn-primary {
+            background: $color-branding;
+            border: 1px solid $color-branding;
+        }
+        &.btn-danger {
+            border: 1px solid red;
+            background: red;
+        }
+    }
+
+    // Board Columns
+    .board-columns {
+        display: flex;
+        margin: 0 auto;
+        padding: 0 30px;
+        max-width: 1300px;
+        overflow-x: scroll;
+        &__column {
+            background-color: $column-bg;
+            border: 1px solid $column-border;
+            width: 320px;
+            min-width: 320px;
+            border-radius: 8px 8px 0px 0px;
+            margin-right: 30px;
+            margin-bottom: 40px;
+            &-title {
+                font-weight: bold;
+                border-bottom: 2px solid $column-border;
+                padding: 8px;
+                color: $color-branding;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                .delete-icon {
+                    font-size: 15px;
+                    cursor: pointer;
+                    text-transform: capitalize;
+                    font-weight: bold;
+                }
+            }
+
+            &-body {
+                padding: 8px;
+                height: 400px;
+                overflow-y: scroll;
+            }
+            &-footer {
+                padding: 4px 8px;
+                font-weight: bold;
+                border-top: 2px solid $column-border;
+                font-size: 15px;
+                & > div {
+                    cursor: pointer;
+                }
+            }
+        }
+        &__new {
+            button {
+                background: #7b3eb8;
+                width: 183px;
+                padding: 8px;
+                border-radius: 4px;
+            }
+        }
+    }
+
+    // Board cards
+    .board-cards {
+        &__card {
+            margin-bottom: 8px;
+            cursor: pointer;
+            &-title {
+                background: #fff;
+                border-radius: 5px;
+                padding: 8px;
+                border: 1px solid #eeeeee;
+                font-weight: 600;
+                font-size: 15px;
+            }
+        }
+    }
+
+    // Board Modal
+    .board-modal {
+        padding: 0 20px;
+
+        &__form {
+            .form-group {
+                margin-bottom: 5px;
+                label {
+                    display: block;
+                    font-weight: bold;
+                }
+                input, textarea {
+                    width: 100%;
+                    padding: 4px;
+                    font-family: 'Nunito', sans-serif;
+                    font-size: 16px;
+                    box-sizing: border-box;
+                }
+            }
+        }
+
+        &__actions {
+            margin: 10px 0px 25px 0;
+            text-align: right;
+        }
+    }
+
+    .board-export {
+        text-align: right;
+        padding-right: 20px;
+        button {
+            background: #7b3eb8;
+            height: 40px;
+            width: 110px;
+            padding: 0 15px;
+            border-radius: 20px;
+            a {
+                text-decoration: none;
+                color: #fff;
+            }
+        }
+    }
+
+
+}
+
+// Some utils
+.text-center {
+    text-align: center;
+}
